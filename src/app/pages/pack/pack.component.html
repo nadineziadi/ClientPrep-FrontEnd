@@ -1,0 +1,28 @@
+<div class="card mb-4">
+  <div class="card-header py-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Votre Pack</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Type Ticket</th>
+              <th>Prix Ticket</th>
+              <th>Nombre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let pack of packs | async">
+              <td>{{ pack.typetoken.nom }}</td>
+              <td>{{ pack.typetoken.prix }}</td>
+              <td>{{ pack.nombre }}</td>
+              <!--<td style="color:red">{{centreRecharge.user.username}}</td>-->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<nav>
+  <!-- <h2 style="text-align: center;color:blue; font-weight: bold;">Gestion des compteurs prépayés</h2> -->
+  <div style="margin-left: auto">
+    <a routerLink="../home" class="navMenu">Home</a>
+  </div>
+</nav>
+
+<div class="bg col-md-12">
+  <div class="card card-container mx-auto">
+    <h2>Connexion</h2>
+
+    <form
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <!-- <label for="username">Username</label> -->
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+          placeholder="username"
+          required
+        />
+
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && username.invalid"
+        >
+          Username is required!
+        </div>
+      </div>
+      <div class="form-group">
+        <!-- <label for="password">Password</label> -->
+
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+          placeholder="password"
+        />
+
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && password.invalid"
+        >
+          <div *ngIf="password.errors.required">Password is required</div>
+          <div *ngIf="password.errors.minlength">
+            Password must be at least 6 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button
+          class="btn btn-primary btn-block"
+          style="
+            background: #22577a;
+            border-radius: 20px;
+            box-sizing: border-box;
+          "
+        >
+          Se connecter
+        </button>
+        <p>
+          Vous n'avez pas de compte?<a
+            style="text-align: end"
+            routerLink="../register"
+          >
+            Inscrivez-vous!</a
+          >
+        </p>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="(f.submitted && isLoginFailed) || isLocked"
+        >
+          Login failed: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+   
+  </div>
+</div>

@@ -1,0 +1,46 @@
+.container {
+    padding: 20px;
+    background-color: #f0f2f3;
+  }
+  
+  .text-center {
+    text-align: center;
+  }
+  
+  .btn {
+    font-size: 16px;
+    padding: 10px 20px;
+  }
+  
+  .btn-info {
+    background-color: #23899D;
+    border-color: #23899D;
+    color: #ffffff;
+  }
+  
+  .btn-success {
+    background-color: #FFC107;
+    border-color: #FFC107;
+    color: #ffffff;
+  }
+  
+  .modal-header {
+    background-color: #99bec6;
+  }
+  
+  .modal-header h4 {
+    color: #ffffff; /* choose a fitting text color, such as black */;
+  }
+  
+  .btn-success {
+    background-color: #F7B801;
+    border-color: #F7B801;
+  
+  }
+  
+  .btn-info {
+    background-color: #23899D;
+    /* Other styles */
+  }
+  /* Add any other custom styles or enhancements here */
+  

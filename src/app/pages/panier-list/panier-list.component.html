@@ -1,0 +1,79 @@
+<div class="card mb-4">
+  <div class="card-header py-3">
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Votre panier</h2>
+      </div>
+      <div class="panel-body">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>libelle compteur</th>
+              <th>prix</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let panier of paniers | async">
+              <td>{{ panier.token.compteur.libelle }}</td>
+              <td>{{ panier.token.typetoken.prix }}</td>
+
+              <!--<td><button (click)="payerPanier(panier.id)" class="btn btn-danger">Payer</button>  </td>-->
+              <td>
+                <button type="button" (click)="Payer(panier.id)" class="btn btn-success">
+                  Payer
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #contentSell let-modal>
+  <span
+    class="fa-stack fa-1x"
+    (click)="modal.dismiss('cancel click')"
+    style="
+      position: absolute;
+      top: -25px;
+      right: -14px;
+      padding: 10px;
+      z-index: 1111;
+      cursor: pointer;
+    "
+  >
+    <i
+      class="fa fa-circle fa-stack-2x"
+      style="
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-color: #d5e77f;
+      "
+    >
+    </i>
+    <i
+      class="fa fa-times fa-stack-1x"
+      style="color: rgb(255, 255, 255); font-size: 19px"
+    ></i>
+  </span>
+
+  <div class="modal-body">
+    <p class="modal-title">Êtes-vous sur de vouloir payer ce token ?</p>
+  </div>
+
+  <div class="modal-footer">
+    <button
+    type="button"
+    (click)="ConfirmePayerPanier()"
+    class="btn btn-success"
+  >
+    Payer
+  </button>
+  <button type="button" (click)="cancelPaiement()" class="btn btn-info">
+    Annuler
+   </button>
+  </div>
+</ng-template>

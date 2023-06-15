@@ -1,0 +1,128 @@
+<div id="wrapper">
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center">
+    <div class="sidebar-brand-text"><span></span></div>
+  </a>
+  <ul
+    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+  >
+    <!-- Divider -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
+      <div class="sidebar-brand-text"><span></span></div>
+    </a>
+    <li class="nav-item">
+      <a class="nav-link" href=""> <span></span></a>
+    </li>
+
+    <hr class="sidebar-divider my-0" />
+
+    <li class="nav-item">
+      <a class="nav-link" href=""> <span></span></a>
+    </li>
+    <hr class="sidebar-divider my-0" />
+    <hr class="sidebar-divider" />
+    <li class="nav-item" style="margin-top: 80px">
+      <a class="nav-link" routerLink="/marchand/vendreticket">
+        <i class="fa-solid fa-ticket" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Vente tickets</span></a
+      >
+    </li>
+
+    <hr class="sidebar-divider" />
+    <li class="nav-item">
+      <a class="nav-link" href="" routerLink="/marchand/pack">
+        <i class="fa-solid fa-box-open" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Pack </span></a
+      >
+    </li>
+
+    <hr class="sidebar-divider" />
+    <li class="nav-item">
+      <a class="nav-link" href="" routerLink="/marchand/HistoriqueVente">
+        <i class="fa-solid fa-sack-dollar" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Historique des ventes </span></a
+      >
+    </li>
+    <hr class="sidebar-divider my-0" />
+  </ul>
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <nav>
+        <!--Navigation Bar Starts Here-->
+        <ul style="margin-top: 30px">
+          <a
+            ><li>
+              <h2 style="text-align: center; font-weight: bold">
+                Espace Marchand
+              </h2>
+            </li></a
+          ><!--LOGO-->
+          <a class="display-picture"
+            ><img src="https://i.pravatar.cc/85" alt="" /></a
+          ><!--Profile Image-->
+        </ul>
+        <ul style="z-index: 1050"></ul>
+        <div class="card hidden">
+          <!--ADD TOGGLE HIDDEN CLASS ATTRIBUTE HERE-->
+          <ul style="z-index: 1050">
+            <!--MENU-->
+            <li><a href="/marchand/profile">Profile</a></li>
+            <li><a href="../login">Déconnecter</a></li>
+          </ul>
+        </div>
+      </nav>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <p *ngIf="showSimpleUserBoard">
+            <button class="btn btn-success" type="button">
+              <span
+                style="color: white; font-weight: bold"
+                *ngFor="let solde of soldes | async"
+                >Votre solde est : {{ solde.valeur | number : "1.2-2" }} TND
+              </span>
+            </button>
+          </p>
+          <p *ngIf="showModeratorBoard">
+            <button class="btn btn-success" type="button">
+              <span
+                style="color: white; font-weight: bold"
+                *ngFor="let solde of soldes | async"
+                >Votre solde est : {{ solde.valeur | number : "1.2-2" }} TND
+              </span>
+            </button>
+          </p>
+          <ul *ngIf="isLoggedIn" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href class="nav-link" (click)="logout()"
+                ><button class="btn btn-warning" type="button">
+                  <span style="color: black; font-weight: bold"
+                    >Déconnexion</span
+                  >
+                </button></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Content Row -->
+
+        <div class="row" class="container-fluid" style="height: 75%">
+          <router-outlet style="width: 75%; height: 100%"></router-outlet>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+
+    <!-- End of Footer -->
+  </div>
+</div>

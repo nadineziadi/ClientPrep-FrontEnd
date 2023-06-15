@@ -1,0 +1,144 @@
+<div class="container" *ngIf="role != null; else loggedOut">
+  <p>
+    <strong>Username:</strong>
+    {{ profile.username }}
+  </p>
+  <p>
+    <strong>Téléphone:</strong>
+    {{ profile.telephone }}
+  </p>
+  <p *ngIf="role == 'ROLE_MARCHAND'">
+    <strong>Libelle:</strong>
+    {{ profile.libelle }}
+  </p>
+  <p *ngIf="role == 'ROLE_MARCHAND'">
+    <strong>Gouvernerat:</strong>
+    {{ profile.gouvernorat?.nom }}
+  </p>
+  <button class="btn btn-primary" (click)="open(contentUpdate)">
+    Modifier Profile
+  </button>
+</div>
+
+<ng-template #loggedOut> Please login. </ng-template>
+
+<ng-template #contentUpdate let-modal>
+  <span
+    class="fa-stack fa-1x"
+    (click)="modal.dismiss('cancel click')"
+    style="
+      position: absolute;
+      top: -25px;
+      right: -14px;
+      padding: 10px;
+      z-index: 1111;
+      cursor: pointer;
+    "
+  >
+    <i
+      class="fa fa-circle fa-stack-2x"
+      style="
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-color: #d5e77f;
+      "
+    >
+    </i>
+    <i
+      class="fa fa-times fa-stack-1x"
+      style="color: rgb(255, 255, 255); font-size: 19px"
+    ></i>
+  </span>
+
+  <div class="modal-header">
+    <h4 class="m-0 font-weight-bold">Modifier</h4>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="form_Update_Profile" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Username</label>
+        <input
+          type="text"
+          class="form-control"
+          id="usernames"
+          formControlName="username"
+          name="username"
+          [ngClass]="{ 'is-invalid': submitted && username.errors }"
+          minlength="3"
+        />
+        <div *ngIf="submitted && username.errors" class="invalid-feedback">
+          <div *ngIf="username.errors.required">* Username est obligatoire</div>
+          <div *ngIf="username.errors.minlength">
+            * Username doit comporter au moins 3 caractères
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Téléphone</label>
+        <input
+          type="text"
+          class="form-control"
+          id="telephone"
+          formControlName="telephone"
+          name="telephone"
+          [ngClass]="{ 'is-invalid': submitted && telephone.errors }"
+        
+        />
+        <div *ngIf="submitted && telephone.errors" class="invalid-feedback">
+          <div *ngIf="telephone.errors.required">
+            * Téléphone est obligatoire
+          </div>
+          <div *ngIf="telephone.errors.pattern">
+            * numéro de téléphone doit comporter 8 chiffres
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="role == 'ROLE_MARCHAND'">
+        <label for="name">Libelle</label>
+        <input
+          type="text"
+          class="form-control"
+          id="libelle"
+          formControlName="libelle"
+          name="libelle"
+          [ngClass]="{ 'is-invalid': submitted && libelle.errors }"
+          minlength="3"
+        />
+        <div *ngIf="submitted && libelle.errors" class="invalid-feedback">
+          <div *ngIf="libelle.errors.required">* Libelle est obligatoire</div>
+          <div *ngIf="libelle.errors.minlength">
+            * libelle doit comporter au moins 3 caractères
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="role == 'ROLE_MARCHAND'">
+        <label for="name">Gouvernorat</label>
+        <br />
+        <select
+          class="form-control"
+          [ngClass]="{ 'is-invalid': submitted && gouvernorat.errors }"
+          formControlName="gouvernorat"
+          name="gouvernorat"
+        >
+          <option value="null" selected disabled>Séléctionner</option>
+          <option
+            *ngFor="let gouvernorat of gouvernorats | async"
+            [value]="gouvernorat.id"
+          >
+            {{ gouvernorat.nom }}
+          </option>
+        </select>
+        <div *ngIf="submitted && gouvernorat.errors" class="invalid-feedback">
+          <div *ngIf="gouvernorat.errors.required">
+            * Gouvernorat est obligatoire
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-success">Modifier</button>
+    </form>
+  </div>
+</ng-template>

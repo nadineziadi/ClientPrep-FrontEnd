@@ -1,0 +1,198 @@
+<!-- Custom styles for this page -->
+
+<!-- DataTales Example -->
+<div class="card mb-4">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold">Liste des Utilisateurs</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="width: 35%; text-align: center">Utilisateurs</th>
+            <th style="width: 35%; text-align: center">Téléphone</th>
+            <th style="width: 30%; text-align: center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users | async">
+            <td style="text-align: center">{{ user.username }}</td>
+            <td style="text-align: center">{{ user.telephone }}</td>
+            <td style="text-align: center">
+              <button
+                *ngIf="!user.active"
+                (click)="unblockUser(user.id)"
+                class="btn btn-success"
+                style="margin-left: 10px; margin-right: 10px"
+              >
+                <i class="fa-solid fa-lock-open"></i>
+              </button>
+              <button
+                *ngIf="user.active"
+                (click)="blockUser(user.id)"
+                class="btn btn-warning"
+                style="margin-left: 10px; margin-right: 10px"
+              >
+                <i class="fa-solid fa-lock" style="color: #ffffff"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d5e77f;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: rgb(255, 255, 255); font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-header">
+      <h4 class="m-0 font-weight-bold">Modifier</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form_update_user" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">username</label>
+          <input
+            type="text"
+            class="form-control"
+            id="libelle"
+            formControlName="libelle"
+            [(ngModel)]="centreRechargeform.libelle"
+            name="libelle"
+            [ngClass]="{ 'is-invalid': submitted && libelle.errors }"
+          />
+          <div *ngIf="submitted && libelle.errors" class="invalid-feedback">
+            <div *ngIf="libelle.errors.required">* Libelle est obligatoire</div>
+            <div *ngIf="libelle.errors.minlength">
+              * libelle au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Téléphone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="telephone"
+            formControlName="telephone"
+            [(ngModel)]="centreRechargeform.telephone"
+            name="telephone"
+            [ngClass]="{ 'is-invalid': submitted && telephone.errors }"
+          />
+          <div *ngIf="submitted && telephone.errors" class="invalid-feedback">
+            <div *ngIf="telephone.errors.required">
+              * Téléphone est obligatoire
+            </div>
+            <div *ngIf="telephone.errors.maxlength">
+              * Téléphone au maximum 8 chiffre
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Login</label>
+          <input
+            type="text"
+            class="form-control"
+            id="login"
+            formControlName="login"
+            [(ngModel)]="centreRechargeform.login"
+            name="login"
+            [ngClass]="{ 'is-invalid': submitted && login.errors }"
+          />
+          <div
+            *ngIf="submitted && login.errors && login.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="login.errors.required">* Login est obligatoire</div>
+            <div *ngIf="login.errors.minlength">
+              * Login au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            [(ngModel)]="centreRechargeform.password"
+            name="password"
+            [ngClass]="{ 'is-invalid': submitted && login.errors }"
+            minlength="5"
+          />
+          <div
+            *ngIf="submitted && password.errors && password.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="password.errors.required">
+              * Password est obligatoire
+            </div>
+            <div *ngIf="password.errors.minlength">
+              * Password au moins 5 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Gouvernorat</label>
+          <br />
+          <select
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && gouvernorat.errors }"
+            formControlName="gouvernorat"
+            name="gouvernorat"
+            [(ngModel)]="centreRechargeform.gouvernorat"
+          >
+            <option value="null" selected disabled>Séléctionner</option>
+            <option
+              *ngFor="let gouvernorat of gouvernorats | async"
+              [ngValue]="gouvernorat"
+            >
+              {{ gouvernorat.nom }}
+            </option>
+          </select>
+          <div
+            *ngIf="submitted && gouvernorat.errors && gouvernorat.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="gouvernorat.errors.required">
+              * Gouvernorat est obligatoire
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Ajouter</button>
+      </form>
+    </div>
+  </ng-template>
+</div>

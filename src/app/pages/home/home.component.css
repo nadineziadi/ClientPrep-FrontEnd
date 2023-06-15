@@ -1,0 +1,153 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background-color: transparent;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.navbar-scrolled {
+  background-color: #22577A;
+}
+
+.navbar-nav {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color: #000000;
+}
+
+.navbar-container {
+  margin-left: 400px;
+}
+
+.navbar-scrolled .nav-item a {
+  color: #ffffff;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  text-align: center;
+}
+
+.image-container {
+  position: absolute;
+  padding-bottom: 20px;
+  height: 450px;
+  width: 450px;
+  top: -15px;
+  padding-right: 50px;
+  padding-bottom: 60px;
+  left: 227px;
+}
+
+.hero-title {
+  color: #000000;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  width: 180px;
+  height: 50px;
+  background: #38A3A5;
+  border-radius: 42.5px;
+  margin-right: 20px;
+}
+
+.btn-secondary {
+  width: 180px;
+  height: 50px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 42.5px;
+  color: #000000;
+}
+
+.services-section {
+  background-color: #efefef;
+  padding: 80px 0;
+}
+
+.service-item img {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 10px;
+  margin-left: 40px;
+}
+
+.service-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  margin-left: 40px;
+  text-align: center;
+}
+
+.service-item p {
+  font-size: 14px;
+  margin-bottom: 0;
+  margin-left: 40px;
+  text-align: center;
+}
+
+.securite-section {
+  background: #efefef;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.apropos-section,
+.devenir-marchand-section,
+.aide-section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.btn-link {
+  color: #000000;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  padding-bottom: 50px;
+  margin: auto;
+}
+
+.row {
+  margin-left: 25px;
+}
+
+.aide-section {
+  background-color: #efefef;
+}

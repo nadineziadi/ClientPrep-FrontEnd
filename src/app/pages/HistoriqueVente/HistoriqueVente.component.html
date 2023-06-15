@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Historiques des Ventes</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th style="color: crimson">Numéro</th>
+          <th style="color: crimson">Compteur</th>
+          <th style="color: crimson">Montant</th>
+          <!--<th>Actions</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let ticket of tickets | async">
+          <!--          <td style="color:darkblue">{{ticket.user.username}}</td>-->
+          <td>{{ ticket.numeroSerie }}</td>
+          <td>{{ ticket.numCompteur }}</td>
+          <td style="color: deeppink">{{ ticket.typetoken.prix }}</td>
+          <!--<td><button (click)="deleteToken(token.id)" class="btn btn-danger">Supprimer</button>
+                <button (click)="updateToken(token.id)" class="btn btn-info" style="margin-left: 10px">Modifier</button>
+              </td>-->
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

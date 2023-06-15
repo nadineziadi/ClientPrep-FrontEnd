@@ -1,0 +1,36 @@
+
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold text-primary">Liste des commandes</h3>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered"
+        id="dataTable"
+        width="100%"
+        cellspacing="0"
+      >
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>details commande</th>
+            <th>total</th>
+            <th>date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let commande of commandes | async">
+            <td style="color: red">{{ commande.panier.user.username }}</td>
+            <td>{{ commande.panier.token.compteur.libelle }}</td>
+            <td>{{ commande.panier.token.typetoken.prix }}</td>
+            <td>{{ commande.date }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+</div>

@@ -1,0 +1,254 @@
+<!-- Custom styles for this page -->
+<!-- DataTales Example -->
+<div class="card mb-4">
+  <div class="card-header py-3">
+    <h3 class="m-0 font-weight-bold">Liste des types tokens</h3>
+  </div>
+  <div class="card-body">
+    <div style="display: flex; margin-bottom: 10px">
+      <button
+        style="margin-left: auto"
+        (click)="addNewToken(content)"
+        class="btn btn-success"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="width: 35%; text-align: center">Nom</th>
+            <th style="width: 35%; text-align: center">Prix</th>
+            <th style="width: 30%; text-align: center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let typetoken of typetokens">
+            <td style="text-align: center">{{ typetoken.nom }}</td>
+            <td style="text-align: center">{{ typetoken.prix }}</td>
+            <td style="text-align: center">
+              <button
+                (click)="updateTypetoken(typetoken.id, contentUpdate)"
+                class="btn btn-info"
+                style="margin-left: 10px; margin-right: 10px"
+              >
+                <i class="fa fa-pencil"> </i>
+              </button>
+              <button
+                (click)="deleteTypetoken(typetoken.id, contentDelete)"
+                class="btn btn-danger"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d5e77f;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: rgb(255, 255, 255); font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-header">
+      <h4 class="m-0 font-weight-bold">Ajout type token</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form_add_type_token" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Libelle</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nom"
+            formControlName="libelle"
+            [(ngModel)]="typetoken.nom"
+            name="nom"
+            [ngClass]="{ 'is-invalid': submitted && libelle.errors }"
+            minlength="3"
+          />
+          <div
+            *ngIf="submitted && libelle.errors && libelle.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="libelle.errors.required">* Libelle est obligatoire</div>
+            <div *ngIf="libelle.errors.minlength">
+              * libelle doit comporter au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Prix</label>
+          <input
+            type="number"
+            class="form-control"
+            id="prix"
+            [(ngModel)]="typetoken.prix"
+            name="prix"
+            formControlName="prix"
+            [ngClass]="{ 'is-invalid': submitted && prix.errors }"
+            min="0"
+          />
+          <div *ngIf="submitted && prix.errors" class="invalid-feedback">
+            <div *ngIf="prix.errors.required">* Prix est obligatoire</div>
+            <div *ngIf="prix.errors.min">* Prix ne doit etre négative</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Ajouter</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #contentUpdate let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d1ef12;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: black; font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-header">
+      <h4 class="m-0 font-weight-bold text-primary">Modifier Type Token</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form_update_type_token" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Libelle</label>
+          <input
+            type="text"
+            class="form-control"
+            id="nom"
+            formControlName="libelleU"
+            [(ngModel)]="typetoken.nom"
+            name="nom"
+            [ngClass]="{ 'is-invalid': submitted && libelleU.errors }"
+            minlength="3"
+          />
+          <div *ngIf="submitted && libelleU.errors" class="invalid-feedback">
+            <div *ngIf="libelleU.errors.required">
+              * Libelle est obligatoire
+            </div>
+            <div *ngIf="libelleU.errors.minlength">
+              * libelle doit comporter au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Prix</label>
+          <input
+            type="number"
+            class="form-control"
+            id="prix"
+            [(ngModel)]="typetoken.prix"
+            name="prix"
+            formControlName="prixU"
+            [ngClass]="{ 'is-invalid': submitted && prixU.errors }"
+          />
+          <div *ngIf="submitted && prixU.errors" class="invalid-feedback">
+            <div *ngIf="prixU.errors.required">* Prix est obligatoire</div>
+            <div *ngIf="prixU.errors.min">* Prix ne doit etre négative</div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Modifier</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #contentDelete let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d1ef12;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: black; font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-body">
+      <p class="modal-title">
+        Êtes-vous sur de vouloir supprimer ce type token ?
+      </p>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        (click)="confirmDeleteToken()"
+        class="btn btn-danger"
+      >
+        Supprimer
+      </button>
+      <button type="button" (click)="cancelDeleteToken()" class="btn btn-info">
+        Annuler
+      </button>
+    </div>
+  </ng-template>
+</div>

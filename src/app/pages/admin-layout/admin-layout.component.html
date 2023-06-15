@@ -1,0 +1,126 @@
+<div id="wrapper">
+  <a class="sidebar-brand d-flex align-items-center justify-content-center">
+    <div class="sidebar-brand-text"><span></span></div>
+  </a>
+
+  <ul
+    class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+    id="accordionSidebar"
+  >
+    <!-- Sidebar - Brand -->
+    <a class="sidebar-brand d-flex align-items-center justify-content-center">
+      <div class="sidebar-brand-text"><span></span></div>
+    </a>
+
+    <!-- Divider -->
+  
+    <hr class="sidebar-divider my-0" />
+    <hr class="sidebar-divider" style="margin-top: 60px"/>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/admin/statistique">
+        <i class="fa-solid fa-chart-line" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Statistiques</span></a
+      >
+    </li>
+
+    <li class="nav-item" style="margin-top: 15px">
+      <a class="nav-link" routerLink="/admin/commandes">
+        <i class="fa-solid fa-cart-shopping" style="color: #23899d"></i>
+        <span class="mystyle">&nbsp; Consulter les commandes</span></a
+      >
+    </li>
+
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Dashboard -->
+    <li class="nav-item" style="margin-top: 15px">
+      <a class="nav-link" href="" routerLink="/admin/users">
+        <i class="fa-solid fa-user" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Gestion des Utilisateurs</span></a
+      >
+    </li>
+
+    <!-- Divider -->
+
+    <li class="nav-item" style="margin-top: 15px">
+      <a
+        class="nav-link"
+        routerLink="/admin/typetokens"
+        routerLinkActive="router-link-active"
+      >
+        <i class="fa-solid fa-table" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Gestion des types tokens </span>
+      </a>
+    </li>
+
+    <hr class="sidebar-divider my-0" />
+
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item" style="margin-top: 15px">
+      <a class="nav-link" routerLink="/admin/marchands">
+        <i class="fa-solid fa-shop" style="color: #23899d"></i>
+        <span class="mystyle"> &nbsp; Gestion des marchands</span>
+      </a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider" />
+  </ul>
+
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Topbar -->
+      <nav class="navbar navbar-expand topbar mb-4 static-top">
+        <div class="admin">
+          <h2 style="text-align: center; font-weight: bold">
+            Espace Administrateur
+          </h2>
+        </div>
+        <a style="margin-left: auto" class="navMenu" routerLink="../login"
+          >déconnexion</a
+        >
+      </nav>
+      <!-- End of Topbar -->
+
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <p *ngIf="showModeratorBoard">
+            <button class="btn btn-success" type="button">
+              <span
+                style="color: white; font-weight: bold"
+                *ngFor="let solde of soldes | async"
+                >Votre solde est : {{ solde.valeur | number : "1.2-2" }} TND
+              </span>
+            </button>
+          </p>
+          <ul *ngIf="isLoggedIn" class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href class="nav-link" (click)="logout()"
+                ><button class="btn btn-warning" type="button">
+                  <span style="color: black; font-weight: bold"
+                    >Déconnexion</span
+                  >
+                </button></a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Content Row -->
+
+        <div class="row" class="container-fluid" style="height: 75%">
+          <router-outlet style="width: 75%; height: 100%"></router-outlet>
+        </div>
+      </div>
+      <!-- /.container-fluid -->
+    </div>
+    <!-- End of Main Content -->
+
+    <!-- Footer -->
+
+    <!-- End of Footer -->
+  </div>
+</div>

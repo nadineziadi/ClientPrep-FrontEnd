@@ -1,0 +1,22 @@
+.card-header {
+    background-color: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-header h3 {
+    font-size: 30px;
+    color: #09033B;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .btn-success {
+    background-color: #F35B04;
+    border-color: #F35B04;
+  }
+
+  .btn-success:hover, .btn-success:active {
+    background-color: #ca4a00;
+    border-color: #ca4a00;
+  }

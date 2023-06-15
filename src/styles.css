@@ -1,0 +1,62 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("assets/css/sb-admin-2.css");
+@import "../node_modules/font-awesome/css/font-awesome.css";
+@import '~ngx-toastr/toastr';
+@import url("assets/vendor/datatables/dataTables.bootstrap4.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Instrument+Sans&family=Tinos&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Instrument+Sans&family=Sansita:ital,wght@1,700&family=Tinos&display=swap');
+
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100&family=Instrument+Sans&display=swap');
+
+.navMenu {
+    margin: 10px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+.modal-body {
+    padding: 15px 25px 15px 25px !important;
+  }
+  .modal-title{
+    font: normal normal 600 17px/19px Montserrat;
+  }
+  
+  .btn-modal
+  {
+    border-radius: 20px ;
+    background: #27272F 0% 0% no-repeat padding-box;
+    color: whitesmoke;
+    min-width: 70px;
+    height: 23px;
+    margin-left: 20px!important;
+    line-height: 1;
+    margin-right: 5px;
+    box-shadow: 0px 3px 6px #00000029;
+    padding-bottom: 3px;
+  }
+  
+  .modal-btns
+  {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .customModal .modal-content
+  {
+    max-width: 450px !important;
+  }
+
+  .form-control.is-invalid{
+    border-color: #dc3545!important;
+      box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+  }
+  
+  .invalid-feedback {
+    margin-top: 0rem!important; display: block!important;
+  }

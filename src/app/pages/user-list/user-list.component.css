@@ -1,0 +1,48 @@
+.modal-header {
+    background-color: #99bec6;
+  }
+  
+  .modal-header h4 {
+    color: #ffffff; /* choose a fitting text color, such as black */;
+  }
+  
+  
+  
+  .btn-info {
+    background-color: #23899D;
+    /* Other styles */
+  }
+  
+  .btn-danger {
+    background-color: #F35B04;
+    /* Other styles */
+  }
+  
+  .card-header {
+    background-color: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-header h3 {
+    font-size: 30px;
+    color: #09033B;
+    margin: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  
+  
+  .table-bordered tbody td {
+    border: none;
+    border-bottom: 1px solid #dee2e6; /* Add bottom border to rows */
+  }
+  thead {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+  
+  thead th {
+    border-right: none;
+    border-left: none;
+  }

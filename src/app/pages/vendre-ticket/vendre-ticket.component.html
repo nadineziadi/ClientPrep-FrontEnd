@@ -1,0 +1,100 @@
+<h3>Vendre Ticket</h3>
+
+<div style="width: 400px">
+  <form [formGroup]="formVente" (ngSubmit)="onSubmit()" [hidden]="successSell">
+    <div class="form-group">
+      <label for="typetoken">Prix</label>
+      <br />
+      <select formControlName="prix"   [ngClass]="{ 'is-invalid': submitted && prix.errors }"
+        name="typetoken"
+        [(ngModel)]="ticket.typetoken"
+        class="form-control"
+      >
+      <option value="null" disabled selected>Sélectionner</option>
+        <option
+          *ngFor="let typetoken of typetokens | async"
+          [ngValue]="typetoken"
+        >
+          {{ typetoken.prix }}
+        </option>
+      </select>
+      <div *ngIf="submitted && prix.errors" class="invalid-feedback">
+        <div *ngIf="prix.errors.required">
+          * Prix est obligatoire
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="numCompteur">Numero Compteur</label>
+      <input
+        type="text"
+        class="form-control"
+        id="numCompteur"
+        required
+        [(ngModel)]="ticket.numCompteur" formControlName="compteur"   [ngClass]="{ 'is-invalid': submitted && compteur.errors }"
+        name="numCompteur"
+      />
+      <div *ngIf="submitted && compteur.errors" class="invalid-feedback">
+        <div *ngIf="compteur.errors.required">
+          * Compteur est obligatoire
+        </div>
+        <div *ngIf="compteur.errors.pattern">
+          * Format  Compteur invalide (c-xxxxx)
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-success">Ajouter</button>
+  </form>
+</div>
+
+<div *ngIf="successSell">
+  <h4>Voici numéro ticket {{ serial }}</h4>
+  <!-- <button class="btn btn-success" (click)="newFormateur()">Add</button> -->
+</div>
+<ng-template #contentSell let-modal>
+  <span
+    class="fa-stack fa-1x"
+    (click)="modal.dismiss('cancel click')"
+    style="
+      position: absolute;
+      top: -25px;
+      right: -14px;
+      padding: 10px;
+      z-index: 1111;
+      cursor: pointer;
+    "
+  >
+    <i
+      class="fa fa-circle fa-stack-2x"
+      style="
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-color: #d5e77f;
+      "
+    >
+    </i>
+    <i
+      class="fa fa-times fa-stack-1x"
+      style="color: rgb(255, 255, 255); font-size: 19px"
+    ></i>
+  </span>
+
+  <div class="modal-body">
+    <p class="modal-title">Êtes-vous sur de vouloir Vendre ce ticket ?</p>
+  </div>
+
+  <div class="modal-footer">
+    <button
+      type="button"
+      (click)="confirmVendreTicket()"
+      class="btn btn-danger"
+    >
+      Vendre
+    </button>
+    <button type="button" (click)="cancelVendre()" class="btn btn-info">
+      Annuler
+    </button>
+  </div>
+</ng-template>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        td {
+            margin: 10px 10px 10px 10px;
+            padding: 10px 10px 10px 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .mystyle {
+            font-size: 35px;
+            font-weight: bold;
+            color: white
+        }
+    </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Dashboard</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href=" 	https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/webfonts/fa-solid-900.woff2">
+    <!-- Custom styles for this template-->
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Sidebar - Brand -->
+        <a class="sidebar-brand d-flex align-items-center justify-content-center">
+
+            <div class="sidebar-brand-text mx-3"><span></span></div>
+        </a>
+        <!-- Sidebar User -->
+        <ul *ngIf="showSimpleUserBoard  " class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+                <div class="sidebar-brand-text mx-3"><span></span></div>
+            </a>
+            <!-- Divider -->
+            <li class="nav-item active">
+                <a class="nav-link" href="">
+                    <span></span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#profile"
+                    aria-expanded="true" aria-controls="profile">
+                    <span class="mystyle">Gestion du Profil</span>
+                </a>
+                <div id="profile" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="profile">Consulter Profil</a>
+                        <a class="collapse-item" href="" routerLink="update-profile">Modifier Profil</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#compteur"
+                    aria-expanded="true" aria-controls="compteur">
+
+                    <span class="mystyle">Gestion des Compteurs</span>
+                </a>
+                <div id="compteur" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="compteur/new">Nouveau Compteur</a>
+                        <a class="collapse-item" href="" routerLink="compteurLoggedUsers">Liste des Compteurs</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#tokens" aria-expanded="true"
+                    aria-controls="tokens">
+
+                    <span class="mystyle">Gestion des Tokens</span>
+                </a>
+                <div id="tokens" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="token/new">Nouveau Token</a>
+                        <a class="collapse-item" href="" routerLink="tokenLoggedUsers">Liste des Tokens</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="" routerLink="/paniers">
+                    <span class="mystyle">Consulter Panier</span></a>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item ">
+                <a class="nav-link" href="" routerLink="/commandeLoggedUsers">
+
+                    <span class="mystyle">Historique de mes commandes</span></a>
+            </li>
+            <!-- Nav Item - Pages Collapse Menu -->
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="" routerLink="/centreRechargeforUsers">
+                    <span class="mystyle">Centre de recharge</span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+
+        <!-- Sidebar Admin -->
+        <ul *ngIf="showAdminBoard" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+
+                <div class="sidebar-brand-text mx-3"><span></span></div>
+            </a>
+
+            <!-- Divider -->
+            <li class="nav-item active">
+                <a class="nav-link" href="">
+                    <span></span></a>
+            </li>
+            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <a class="nav-link" href="" routerLink="/stat">
+
+                    <span class="mystyle">Statistiques</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item ">
+                <a class="nav-link" href="" routerLink="/commandes">
+
+                    <span class="mystyle">Consulter les commandes</span></a>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <a class="nav-link" href="" routerLink="/users">
+                    <span class="mystyle">Gestion des clients</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#typetokens"
+                    aria-expanded="true" aria-controls="typetokens">
+
+                    <span class="mystyle">Gestion des service</span>
+                </a>
+                <div id="typetokens" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="typetoken/new">Nouveau Type Token</a>
+                        <a class="collapse-item" href="" routerLink="typetokens">Consulter Type Token</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#centres"
+                    aria-expanded="true" aria-controls="centres"><span class="mystyle"> Gestion des centres de
+                        recharge</span>
+                </a>
+                <div id="centres" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="centreRecharge/new">Nouveau Centre</a>
+                        <a class="collapse-item" href="" routerLink="centreRecharges">Liste des centres</a>
+
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider my-0">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#bonus" aria-expanded="true"
+                    aria-controls="bonus">
+
+                    <span class="mystyle">Gestion des Points de bonus</span>
+                </a>
+                <div id="bonus" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="bonus/new">Nouveau Type Bonus</a>
+                        <a class="collapse-item" href="" routerLink="bonuss">Consulter Type Bonus</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Sidebar Moderator -->
+        <ul *ngIf="showModeratorBoard" class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+            id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center">
+
+                <div class="sidebar-brand-text mx-3"><span></span></div>
+            </a>
+
+            <!-- Divider -->
+            <li class="nav-item active">
+                <a class="nav-link" href="">
+                    <span></span></a>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#profile"
+                    aria-expanded="true" aria-controls="profile">
+                    <span class="mystyle">Gestion du Profil</span>
+                </a>
+                <div id="profile" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="profile">Consulter Profil</a>
+                        <a class="collapse-item" href="" routerLink="update-profile">Modifier Profil</a>
+                    </div>
+                </div>
+            </li>
+
+            <hr class="sidebar-divider">
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#recharge"
+                    aria-expanded="true" aria-controls="recharge">
+
+                    <span class="mystyle">Gestion des Recharges</span>
+                </a>
+                <div id="recharge" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="" routerLink="recharge/new">Recharge par téléphone</a>
+                        <a class="collapse-item" href="" routerLink="recharges">Consulter les recharges</a>
+                    </div>
+                </div>
+            </li>
+            <hr class="sidebar-divider">
+            <li class="nav-item active">
+                <!--<a class="nav-link" href="" routerLink="/ticket/new">-->
+                <a class="nav-link" href="" routerLink="/ticket/new">
+                    <span class="mystyle">Gestion des Tickets</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+
+        </ul>
+        <!-- End of Sidebar -->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav style="margin-top: 20px;"
+                    class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <h2 style="text-align: center;color:blue; font-weight: bold;">Gestion des compteurs prépayés</h2>
+
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+
+                        <p *ngIf="showSimpleUserBoard">
+                            <button class="btn btn-success" type="button">
+                                <span style="color:white; font-weight: bold;" *ngFor="let solde of soldes | async">Votre
+                                    solde est : {{solde.valeur |number : '1.2-2'}} TND </span></button>
+                        </p>
+                        <p *ngIf="showModeratorBoard">
+                            <button class="btn btn-success" type="button">
+                                <span style="color:white; font-weight: bold;" *ngFor="let solde of soldes | async">Votre
+                                    solde est : {{solde.valeur |number : '1.2-2'}} TND </span></button>
+                        </p>
+                        <ul *ngIf="isLoggedIn" class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a href class="nav-link" (click)="logout()"><button class="btn btn-warning"
+                                        type="button"><span
+                                            style="color:black; font-weight: bold;">Déconnexion</span></button></a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="row">
+                        <ul class="navbar-nav ml-auto" justify-content-end *ngIf="!isLoggedIn">
+                            <li>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <a href="/login" routerLink="login">Se connecter</a>
+                                        </td>
+                                        <td></td>
+                                        <td><a href="/register" routerLink="register">Inscription</a>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            </li>
+                        </ul>
+
+
+
+
+                    </div>
+
+
+
+                    <!-- Content Row -->
+
+                    <div class="row" class="container-fluid" style="height:75%">
+                        <router-outlet style=" width: 75%; height:100%"></router-outlet>
+                    </div>
+
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; Your Website 2023</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="assets/vendor/jquery/jquery.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="assets/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="assets/js/sb-admin-2.min.js"></script>
+
+    <!-- Page level plugins -->
+    <script src="assets/vendor/chart.js/Chart.min.js"></script>
+
+    <!-- Page level custom scripts -->
+    <script src="assets/js/demo/chart-area-demo.js"></script>
+    <script src="assets/js/demo/chart-pie-demo.js"></script>
+
+</body>
+
+</html>

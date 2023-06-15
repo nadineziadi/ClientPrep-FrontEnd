@@ -1,0 +1,297 @@
+<div class="home" style="width: inherit">
+  <!--navbar section-->
+  <nav
+    [ngClass]="{ 'navbar-scrolled': isScrolled }"
+    class="navbar navbar-expand-lg"
+  >
+    <div class="navbar-container">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="../login">Connexion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  (click)="scrollToSection('services')"  >Services</a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            (click)="scrollToSection('a-propos')" 
+        
+            >À propos</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="scrollToSection('securite')" >Sécurité</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"  (click)="scrollToSection('devenir-marchand')"  >Devenir Marchand</a>
+        </li>
+        <li class="nav-item"><a class="nav-link" (click)="scrollToSection('aide')" >Aide</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!--hero section-->
+  <section class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="hero-content">
+            <h1 class="hero-title">Paiement électronique simplifié</h1>
+            <h4>Un environnement facile et sécurisé</h4>
+            <p>
+              Achetez des tokens, vendez des tickets, transférez de l'argent et
+              bien plus encore sur notre site web !
+            </p>
+            <div class="hero-buttons">
+              <button class="btn btn-primary" routerLink="../login">
+                Connexion
+              </button>
+              <button class="btn btn-secondary" routerLink="../register">
+                Inscription
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img
+            class="image-container"
+            src="/assets/img/3Dmoneycard.png"
+            alt="logo"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--services section-->
+  <section id="services" class="services-section">
+    <div class="container">
+      <div class="row" style="display: flex; margin-left:0px;">
+        <h2>Services</h2>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="service-item text-center">
+              <img src="/assets/img/shopping-cart.png" alt="Service 1" />
+              <h3>Achetez des tokens de rechargement</h3>
+              <p>Description of Service 1</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item text-center">
+              <img src="/assets/img/loan.png" alt="Service 2" />
+              <h3>Vendre des tickets de rechargement</h3>
+              <p>Description of Service 2</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="service-item text-center">
+              <img src="/assets/img/history.png" alt="Service 3" />
+              <h3>Suivez votre consommation en temps réel</h3>
+              <p>Description of Service 3</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--a propos section-->
+  <section id="a-propos" class="apropos-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="apropos-content">
+            <h2>À propos</h2>
+            <p>
+              Bienvenue sur notre site web de prépaiement, où vous pouvez
+              acheter facilement des tokens de recharge d'électricité pour
+              alimenter votre compteur. Nous sommes là pour simplifier votre
+              expérience en matière de rechargement, que vous soyez un client
+              désireux d'effectuer une recharge en ligne ou un marchand
+              souhaitant vendre des tickets de recharge aux utilisateurs qui
+              n'ont pas accès à Internet. Avec notre plateforme conviviale et
+              sécurisée, vous pouvez profiter d'une solution pratique pour
+              maintenir votre compteur d'électricité alimenté en tout temps. Ne
+              laissez plus les tracas des paiements traditionnels entraver votre
+              accès à l'énergie - faites confiance à notre service de
+              prépaiement pour une expérience de recharge sans soucis.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--securité section-->
+  <section id="securite" class="securite-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="securite-content">
+            <h2>Sécurité</h2>
+            <p>
+              Nous accordons une importance primordiale à la sécurité de vos
+              informations. Lorsque vous utilisez notre plateforme, vous pouvez
+              être assuré que votre connexion est sécurisée à chaque étape. Nous
+              mettons en place des mesures de protection avancées pour garantir
+              que vos données restent intouchables et confidentielles. Notre
+              système utilise des protocoles de cryptage robustes pour sécuriser
+              toutes les communications, assurant ainsi la confidentialité de
+              vos transactions. De plus, nous respectons les normes les plus
+              strictes en matière de protection des données pour garantir que
+              vos informations personnelles sont traitées de manière sécurisée
+              et conforme aux réglementations en vigueur. Vous pouvez donc
+              utiliser notre service en toute tranquillité d'esprit, sachant que
+              votre sécurité est notre priorité absolue.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--devenir marchand section-->
+  <section id="devenir-marchand" class="devenir-marchand-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="devenir-marchand-content">
+            <h2>Devenir Marchand</h2>
+            <p>
+              Nous vous offrons l'opportunité de devenir marchand sur notre
+              plateforme et de profiter des avantages de notre réseau étendu de
+              clients. La sécurité est une priorité absolue dans notre processus
+              de devenir marchand. Si vous êtes intéressé à rejoindre notre
+              programme de marchands, il vous suffit de vous rendre dans notre
+              entreprise et de fournir les documents nécessaires pour être
+              accepté. Nous vérifierons attentivement vos informations afin de
+              garantir l'intégrité de notre réseau de marchands. Une fois cette
+              étape terminée avec succès, nous vous fournirons vos informations
+              de connexion pour accéder à votre compte marchand en toute
+              sécurité. Vous pourrez ainsi commencer à vendre vos tickets de
+              recharge et à participer activement à notre mission de fournir un
+              service pratique et fiable à nos clients.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!--aide section-->
+  <section id="aide" class="aide-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aide-content">
+            <h2>Aide</h2>
+            <div id="accordion" class="accordion">
+              <!-- Question 1 -->
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target="#collapseOne"
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      Comment puis-je acheter des tokens de recharge ?
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body">
+                    Pour acheter des tokens de recharge, connectez-vous à votre
+                    compte, accédez à la section "Acheter des tokens" et suivez
+                    les instructions pour sélectionner le type token et
+                    effectuer le paiement. Une fois le paiement confirmé, les
+                    tokens seront étre montrés immédiatement..
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 2 -->
+              <div class="card">
+                <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseTwo"
+                      aria-expanded="false"
+                      aria-controls="collapseTwo"
+                    >
+                      Quels modes de paiement acceptez-vous ?
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  aria-labelledby="headingTwo"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body">
+                    Nous acceptons les paiements par carte de crédit, carte de
+                    débit et virement bancaire. Lorsque vous effectuez un
+                    paiement, assurez-vous de fournir les informations correctes
+                    et de suivre les étapes indiquées pour finaliser la
+                    transaction.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Question 3 -->
+              <div class="card">
+                <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link collapsed"
+                      data-toggle="collapse"
+                      data-target="#collapseThree"
+                      aria-expanded="false"
+                      aria-controls="collapseThree"
+                    >
+                    Pourquoi devrais-je effectuer des paiements en ligne ?
+                    </button>
+                  </h5>
+                </div>
+                <div
+                  id="collapseThree"
+                  class="collapse"
+                  aria-labelledby="headingThree"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body">
+                    Effectuer des paiements en ligne présente de nombreux avantages. Voici quelques raisons pour lesquelles vous devriez envisager de payer en ligne :
+                    <br>
+                    <br>
+                    <ul>
+                      <li>Convenience : Le paiement en ligne vous permet de régler vos achats rapidement et facilement, sans avoir à vous déplacer physiquement vers un point de vente.</li>
+                      <li>Sécurité : Les transactions en ligne sont sécurisées et utilisent des protocoles de chiffrement avancés pour protéger vos informations financières.</li>
+                      <li>Accessibilité : Vous pouvez effectuer des paiements en ligne à tout moment, 24h/24 et 7j/7, ce qui vous offre une plus grande flexibilité.</li>
+                      <li>Historique des paiements : En payant en ligne, vous bénéficiez d'un historique détaillé de vos transactions, ce qui facilite le suivi de vos dépenses et la gestion de votre budget.</li>
+                    </ul>
+                    <br>
+                  
+                  </div>
+                </div>
+              </div>
+
+              <!-- Ajoutez d'autres questions/sections d'aide ici -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

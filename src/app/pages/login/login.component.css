@@ -1,0 +1,226 @@
+ 
+ /*
+ label {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-container.card {
+  max-width: 400px !important;
+  padding: 40px 40px;
+}
+
+.card {
+  background-color: #f7f7f7;
+  padding: 20px 25px 30px;
+  margin: 0 auto 25px;
+  margin-top: 50px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.profile-img-card {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 10px;
+  display: block;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+} 
+*/
+
+label {
+  display: block;
+  margin-top: 10px;
+}
+
+.card-container.card {
+  max-width: 700px;
+  padding: 40px;
+}
+
+.card {
+  background: linear-gradient(89.79deg, rgba(255, 255, 255, 0.28) 0.19%, rgba(255, 255, 255, 0.4) 0.19%, rgba(255, 255, 255, 0.08) 99.83%);
+  border: 3px solid rgba(255, 254, 254, 0.8);
+  backdrop-filter: blur(2px);
+  border-radius: 40px; 
+  position: absolute;
+  width: 600px;
+  height: 550px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+  margin-top: 40px;
+}
+
+.bg {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/assets/img/Group 237.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+h2 {
+  font-family: 'Roboto Slab';
+  font-style: normal;
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 63px;
+  text-align: center;
+  color: #FFFFFF;
+  margin-bottom: 40px;
+}
+
+.form-control {
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  font-size: 17px;
+  outline: none;
+  padding: 0.5rem;
+  transition: all 0.3s;
+  width: 100%;
+}
+
+.form-control:focus {
+  border-bottom-color: #0077ff;
+  padding: 0.25rem;
+  font-size: 14px;
+}
+
+.form-control::placeholder {
+  font-size: 17px;
+  transition: all 0.3s ease-in-out;
+}
+
+.form-control:focus::placeholder {
+  font-size: 15px;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.icon {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  transform: translateY(-50%);
+}
+
+.btn {
+  background-color: #0077ff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  margin-top: 40px;
+}
+
+.btn:hover {
+  background-color: #0066cc;
+}
+
+p {
+  margin-top: 40px;
+  margin-left:100px;
+}
+
+
+/* Define the keyframes for the animation */
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+
+
+.logo {
+  position: absolute;
+  width: 200.56px;
+  height: 150.15px;
+  left: 500.91px;
+  top: 100px;
+  transform: rotate(4.99deg);
+  animation-name: bounce;
+  animation-duration: 2s; /* increase the duration to 2 seconds */
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #E6E5EC; /* Set background color to #57CC99 */
+  padding: 10px; /* Add some padding for better readability */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  opacity : 0.5;
+
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333; /* Set link color to dark gray */
+  font-weight: bold;
+  margin-right: 20px; /* Add some margin to separate links */
+}
+
+nav a:hover {
+  color: blue; /* Change link color on hover */
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+
+@media (max-width: 768px) {
+ img {
+  display: none;
+ }
+ .bg {
+  width: auto !important;
+ }
+}
+
+

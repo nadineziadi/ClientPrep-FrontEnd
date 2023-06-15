@@ -1,0 +1,77 @@
+.container {
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 500px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .container p {
+    margin: 10px 0;
+  }
+  
+  .container strong {
+    font-weight: bold;
+  }
+  
+  .container p:not(:last-child) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  .container p:last-child {
+    margin-bottom: 0;
+  }
+  
+  .container p strong {
+    margin-right: 5px;
+  }
+  
+  #loggedOut {
+    font-style: italic;
+    color: red;
+  }
+  
+  .button-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .button-container button {
+    background-color: #192736;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button-container button:hover {
+    background-color: #073a0f;
+  }
+
+  
+  .modal-header {
+    background-color: #99bec6;
+  }
+  
+  .modal-header h4 {
+    color: #ffffff;
+  }
+  
+
+  .btn-success {
+    background-color: #F7B801;
+    border-color: #F7B801;
+  
+  }
+
+ .btn-primary {
+  background-color: #22577a;
+  border-color: #22577a;
+ } 

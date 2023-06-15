@@ -1,0 +1,394 @@
+<!-- DataTales Example -->
+<div class="card mb-4">
+  <div class="card-header py-3">
+    <h3 class="m-0 m-0 font-weight-bold">Liste marchands</h3>
+  </div>
+  <div class="card-body">
+    <div style="display: flex; margin-bottom: 10px">
+      <button
+        style="margin-left: auto"
+        (click)="addNewMarchand(content)"
+        class="btn btn-success"
+      >
+        <i class="fa-solid fa-plus"></i>
+      </button>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" cellspacing="0">
+        <thead>
+          <tr>
+            <th style="width: 20%; text-align: center; color: #09033b">
+              Username
+            </th>
+            <th style="width: 20%; text-align: center; color: #09033b">
+              Téléphone
+            </th>
+            <th style="width: 20%; text-align: center; color: #09033b">
+              Libelle
+            </th>
+            <th style="width: 20%; text-align: center">Gouvernorat</th>
+            <th style="width: 20%; text-align: center">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let marchand of marchands | async">
+            <td style="text-align: center">{{ marchand.username }}</td>
+            <td style="text-align: center">{{ marchand.telephone }}</td>
+            <td style="text-align: center">{{ marchand.libelle }}</td>
+            <td style="text-align: center">{{ marchand.nomGouvernerat }}</td>
+            <td style="text-align: center">
+              <button
+                (click)="updateMarchand(marchand.id, contentUpdate)"
+                class="btn btn-info"
+                style="margin-left: 10px; margin-right: 10px"
+              >
+                <i class="fa fa-pencil"> </i>
+              </button>
+              <button
+                (click)="deleteMarchand(marchand.id, contentDelete)"
+                class="btn btn-danger"
+              >
+                <i class="fa-solid fa-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <ng-template #content let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d5e77f;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: rgb(255, 255, 255); font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-header">
+      <h4 class="m-0 font-weight-bold">Ajout Marchand</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form_Add_Marchand" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Libelle</label>
+          <input
+            type="text"
+            class="form-control"
+            id="libelle"
+            formControlName="libelle"
+            [(ngModel)]="marchand.libelle"
+            name="libelle"
+            [ngClass]="{ 'is-invalid': submitted && libelle.errors }"
+          />
+          <div *ngIf="submitted && libelle.errors" class="invalid-feedback">
+            <div *ngIf="libelle.errors.required">* Libelle est obligatoire</div>
+            <div *ngIf="libelle.errors.minlength">
+              * libelle doit comporter au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Téléphone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="telephone"
+            formControlName="telephone"
+            [(ngModel)]="marchand.telephone"
+            name="telephone"
+            [ngClass]="{ 'is-invalid': submitted && telephone.errors }"
+            minlength="8"
+          />
+          <div *ngIf="submitted && telephone.errors" class="invalid-feedback">
+            <div *ngIf="telephone.errors.required">
+              * Téléphone est obligatoire
+            </div>
+            <div *ngIf="telephone.errors.minlength">
+              * numéro de téléphone doit comporter 8 chiffres
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Login</label>
+          <input
+            type="text"
+            class="form-control"
+            id="login"
+            formControlName="login"
+            [(ngModel)]="marchand.login"
+            name="login"
+            [ngClass]="{ 'is-invalid': submitted && login.errors }"
+            minlength="3"
+          />
+          <div
+            *ngIf="submitted && login.errors && login.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="login.errors.required">* Login est obligatoire</div>
+            <div *ngIf="login.errors.minlength">
+              * login doit comporter au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            [(ngModel)]="marchand.password"
+            name="password"
+            [ngClass]="{ 'is-invalid': submitted && login.errors }"
+            minlength="5"
+          />
+          <div
+            *ngIf="submitted && password.errors && password.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="password.errors.required">
+              * Password est obligatoire
+            </div>
+            <div *ngIf="password.errors.minlength">
+              * Password doit comporter au moins 5 caractères.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Gouvernorat</label>
+          <br />
+          <select
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && gouvernorat.errors }"
+            formControlName="gouvernorat"
+            name="gouvernorat"
+            [(ngModel)]="marchand.gouvernorat"
+          >
+            <option value="null" selected disabled>Séléctionner</option>
+            <option
+              *ngFor="let gouvernorat of gouvernorats | async"
+              [ngValue]="gouvernorat"
+            >
+              {{ gouvernorat.nom }}
+            </option>
+          </select>
+          <div
+            *ngIf="submitted && gouvernorat.errors && gouvernorat.invalid"
+            class="invalid-feedback"
+          >
+            <div *ngIf="gouvernorat.errors.required">
+              * Gouvernorat est obligatoire
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Ajouter</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #contentUpdate let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d5e77f;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: rgb(255, 255, 255); font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-header">
+      <h4 class="m-0 font-weight-bold">Modifier Marchand</h4>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="form_Update_Marchand" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="name">Libelle</label>
+          <input
+            type="text"
+            class="form-control"
+            id="libelle"
+            formControlName="libelleU"
+            [(ngModel)]="marchandU.libelle"
+            name="libelle"
+            [ngClass]="{ 'is-invalid': submitted && libelleU.errors }"
+            minlength="3"
+          />
+          <div *ngIf="submitted && libelleU.errors" class="invalid-feedback">
+            <div *ngIf="libelleU.errors.required">
+              * Libelle est obligatoire
+            </div>
+            <div *ngIf="libelleU.errors.minlength">
+              * libelle doit comporter au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Téléphone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="telephone"
+            formControlName="telephoneU"
+            [(ngModel)]="marchandU.telephone"
+            name="telephone"
+            [ngClass]="{ 'is-invalid': submitted && telephoneU.errors }"
+            minlength="8"
+          />
+          <div *ngIf="submitted && telephoneU.errors" class="invalid-feedback">
+            <div *ngIf="telephoneU.errors.required">
+              * Téléphone est obligatoire
+            </div>
+            <div *ngIf="telephoneU.errors.minlength">
+              * numéro de téléphone doit comporter 8 chiffres
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Login</label>
+          <input
+            type="text"
+            class="form-control"
+            id="login"
+            formControlName="loginU"
+            [(ngModel)]="marchandU.username"
+            name="login"
+            [ngClass]="{ 'is-invalid': submitted && loginU.errors }"
+            minlength="3"
+          />
+          <div *ngIf="submitted && loginU.errors" class="invalid-feedback">
+            <div *ngIf="loginU.errors.required">* Login est obligatoire</div>
+            <div *ngIf="loginU.errors.minlength">
+              * login doit comporter au moins 3 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="name">Gouvernorat</label>
+          <br />
+          <select
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && gouvernoratU.errors }"
+            formControlName="gouvernoratU"
+            name="gouvernorat"
+            [(ngModel)]="marchandU.gouvernorat.id"
+          >
+            <option value="null" selected disabled>Séléctionner</option>
+            <option
+              *ngFor="let gouvernorat of gouvernorats | async"
+              [value]="gouvernorat.id"
+            >
+              {{ gouvernorat.nom }}
+            </option>
+          </select>
+          <div
+            *ngIf="submitted && gouvernoratU.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="gouvernoratU.errors.required">
+              * Gouvernorat est obligatoire
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Modifier</button>
+      </form>
+    </div>
+  </ng-template>
+
+  <ng-template #contentDelete let-modal>
+    <span
+      class="fa-stack fa-1x"
+      (click)="modal.dismiss('cancel click')"
+      style="
+        position: absolute;
+        top: -25px;
+        right: -14px;
+        padding: 10px;
+        z-index: 1111;
+        cursor: pointer;
+      "
+    >
+      <i
+        class="fa fa-circle fa-stack-2x"
+        style="
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-color: #d1ef12;
+        "
+      >
+      </i>
+      <i
+        class="fa fa-times fa-stack-1x"
+        style="color: black; font-size: 19px"
+      ></i>
+    </span>
+
+    <div class="modal-body">
+      <p class="modal-title">Êtes-vous sur de vouloir supprimer ce marchand?</p>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        (click)="confirmDeleteMarchand()"
+        class="btn btn-danger"
+      >
+        Supprimer
+      </button>
+      <button
+        type="button"
+        (click)="cancelDeleteMarchand()"
+        class="btn btn-info"
+      >
+        Annuler
+      </button>
+    </div>
+  </ng-template>
+</div>

@@ -1,0 +1,70 @@
+.modal-header {
+    background-color: #99bec6;
+  }
+  
+  .modal-header h4 {
+    color: #ffffff;
+  }
+  
+  .btn-success {
+    background-color: #FFC107;
+    border-color: #FFC107;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-success:hover {
+    background-color: #ffa000;
+  }
+  
+  .btn-info {
+    background-color: #23899D;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-info:hover {
+    background-color: #0d5b6b;
+  }
+  
+  .btn-danger {
+    background-color: #F35B04;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c24903;
+  }
+  
+  .card-header {
+    background-color: #ffffff;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .card-header h3 {
+    font-size: 30px;
+    color: #09033B;
+    margin: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  
+  .table-bordered tbody tr:nth-child(odd) {
+    background-color: #f2f2f2;
+  }
+  
+  .table-bordered tbody tr:nth-child(even) {
+    background-color: #ffffff;
+  }
+  
+  .table-bordered tbody tr:hover {
+    background-color: #d1d1d1;
+  }
+  
+  thead {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+  }
+  
+  body {
+    background-color: #eee;
+  }
+  
